@@ -5,7 +5,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
@@ -13,12 +14,12 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 public class WebAppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
-    public UrlBasedViewResolver setupViewResolver() {
-        UrlBasedViewResolver resolver = new UrlBasedViewResolver();
-     /*   resolver.setPrefix("/pages/");
-        resolver.setSuffix(".jsp");
-        resolver.setViewClass(JstlView.class); */
-        return resolver;
+    public InternalResourceViewResolver viewResolver() {
+    	InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+    	viewResolver.setPrefix("/views/");
+    	viewResolver.setSuffix(".jsp");
+    	viewResolver.setViewClass(JstlView.class);
+        return viewResolver;
     } 
     
     @Bean
