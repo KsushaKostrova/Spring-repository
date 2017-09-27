@@ -1,0 +1,13 @@
+# general ignors
+*~
+bin
+target
+.idea
+*.iml
+.metadata/
+.recommenders/
+.settings/
+Servers/
+RemoteSystemsTempFiles/
+.classpath
+.project 
