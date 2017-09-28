@@ -1,6 +1,7 @@
 package com.kostrova.store;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class GoodDaoImpl implements IGoodDao{
-	Map<Integer, Good> goods;
+	Map<Integer, Good> goods = new HashMap<>();
 
 	@Override
 	public void addExistingGood(Good good) {
@@ -32,7 +33,7 @@ public class GoodDaoImpl implements IGoodDao{
 
 	@Override
 	public List<Good> getAllGoods() {
-		return Arrays.asList((Good[])goods.entrySet().toArray());
+		return new ArrayList<>(goods.values());
 	}
 	
 }

@@ -1,5 +1,8 @@
 package com.kostrova.store;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Good {
 	
 	private Integer id;

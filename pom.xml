@@ -30,6 +30,7 @@
 	</dependencyManagement>
 
 	<build>
+	<!-- finalName>store-server</finalName-->
 		<pluginManagement>
 			<plugins>
 				<plugin>

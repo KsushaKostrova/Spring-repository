@@ -13,7 +13,7 @@
 		<section>
 			<h1>Message : ${message}</h1>
 		</section>
-		<div>Get <a href="goods">goods</a> resource for employee and manager.</div>
+		<!-- div>Get <a href="goods">goods</a> resource for employee and manager.</div-->
 		<div>Get <a href="good">good</a> resource for manager.</div>
 	</body>
 </html>

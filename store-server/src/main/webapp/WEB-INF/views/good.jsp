@@ -23,7 +23,7 @@
 			     </form>
 			</c:if>
 		</h2>
-		<div>Get <a href="goods">goods</a> resource for employee and manager.</div>
+		<!-- div>Get <a href="goods">goods</a> resource for employee and manager.</div-->
 		<div>Get <a href="good">good</a> resource for manager.</div>
 	</body>
 </html>
