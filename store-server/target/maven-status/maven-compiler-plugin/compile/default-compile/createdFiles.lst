@@ -1,0 +1,11 @@
+com/kostrova/store/SecurityInit.class
+com/kostrova/store/GoodsController.class
+com/kostrova/store/WebSecurity.class
+com/kostrova/store/WrongPropertyValueException.class
+com/kostrova/store/GoodDaoImpl.class
+com/kostrova/store/GoodServiceImpl.class
+com/kostrova/store/GoodService.class
+com/kostrova/store/IGoodDao.class
+com/kostrova/store/WebAppInitializer.class
+com/kostrova/store/Good.class
+com/kostrova/store/WebAppConfig.class

@@ -1,0 +1,11 @@
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/GoodDaoImpl.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/Good.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/GoodsController.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/WrongPropertyValueException.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/SecurityInit.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/WebSecurity.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/GoodServiceImpl.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/WebAppInitializer.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/WebAppConfig.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/IGoodDao.java
+/home/ksusha/eclipse-oxygen-workspace/store-server/src/main/java/com/kostrova/store/GoodService.java

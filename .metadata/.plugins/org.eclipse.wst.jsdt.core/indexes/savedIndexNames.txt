@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+/home/ksusha/eclipse-oxygen-workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+3104920539.index
+3407215667.index
+2770508879.index
+1650029867.index
+2421498154.index
