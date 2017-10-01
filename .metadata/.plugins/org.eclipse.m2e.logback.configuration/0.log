@@ -190,3 +190,217 @@
 2017-10-01 14:36:52,849 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
 2017-10-01 14:36:52,852 [Worker-48] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2017-10-01 14:36:52,853 [Worker-48] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-client/src/test/resources
+2017-10-01 15:07:03,397 [Worker-54] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-test:0.0.1-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-test/pom.xml.
+2017-10-01 15:07:14,476 [Worker-54] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /store-test/src/main/java
+2017-10-01 15:07:14,481 [Worker-54] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /store-test/src/main/resources
+2017-10-01 15:07:14,482 [Worker-54] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /store-test/src/test/java
+2017-10-01 15:07:14,483 [Worker-54] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /store-test/src/test/resources
+2017-10-01 15:07:19,163 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:07:19,355 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:07:19,381 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:07:19,383 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:07:31,364 [Worker-45] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-test:0.0.1-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-test/pom.xml.
+2017-10-01 15:07:31,650 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:07:31,651 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:07:31,656 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:07:31,657 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:08:34,357 [Worker-45] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-test:0.0.1-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-test/pom.xml.
+2017-10-01 15:08:35,384 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.pom
+2017-10-01 15:08:35,394 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.pom
+2017-10-01 15:08:35,632 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.pom
+2017-10-01 15:08:35,728 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.pom
+2017-10-01 15:08:35,764 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.pom
+2017-10-01 15:08:35,874 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.pom
+2017-10-01 15:08:36,017 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.pom
+2017-10-01 15:08:36,129 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.7.4/byte-buddy-parent-1.7.4.pom
+2017-10-01 15:08:36,141 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.pom
+2017-10-01 15:08:36,260 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.7.4/byte-buddy-parent-1.7.4.pom
+2017-10-01 15:08:36,271 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.7.4/byte-buddy-parent-1.7.4.pom
+2017-10-01 15:08:36,332 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.pom
+2017-10-01 15:08:36,474 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.7.4/byte-buddy-parent-1.7.4.pom
+2017-10-01 15:08:36,513 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.pom
+2017-10-01 15:08:36,632 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.pom
+2017-10-01 15:08:36,633 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.6/objenesis-2.6.pom
+2017-10-01 15:08:36,853 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.pom
+2017-10-01 15:08:36,865 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.6/objenesis-2.6.pom
+2017-10-01 15:08:36,955 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/2.6/objenesis-parent-2.6.pom
+2017-10-01 15:08:36,961 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.6/objenesis-2.6.pom
+2017-10-01 15:08:37,019 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.6/objenesis-2.6.pom
+2017-10-01 15:08:37,066 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/2.6/objenesis-parent-2.6.pom
+2017-10-01 15:08:37,139 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/2.6/objenesis-parent-2.6.pom
+2017-10-01 15:08:37,174 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.jar
+2017-10-01 15:08:37,198 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/objenesis/objenesis-parent/2.6/objenesis-parent-2.6.pom
+2017-10-01 15:08:37,259 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.jar
+2017-10-01 15:08:37,466 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.jar
+2017-10-01 15:08:37,496 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mockito/mockito-core/2.10.0/mockito-core-2.10.0.jar
+2017-10-01 15:08:37,545 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.jar
+2017-10-01 15:08:37,580 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.jar
+2017-10-01 15:08:39,219 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.jar
+2017-10-01 15:08:39,222 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.7.4/byte-buddy-1.7.4.jar
+2017-10-01 15:08:39,280 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.jar
+2017-10-01 15:08:39,288 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.jar
+2017-10-01 15:08:39,353 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.jar
+2017-10-01 15:08:39,418 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.6/objenesis-2.6.jar
+2017-10-01 15:08:39,432 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.7.4/byte-buddy-agent-1.7.4.jar
+2017-10-01 15:08:39,491 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.6/objenesis-2.6.jar
+2017-10-01 15:08:39,497 [Worker-45] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.6/objenesis-2.6.jar
+2017-10-01 15:08:39,512 [Worker-54] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/objenesis/objenesis/2.6/objenesis-2.6.jar
+2017-10-01 15:08:42,773 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:08:42,775 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:08:42,779 [Worker-45] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:08:42,780 [Worker-45] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:08:48,924 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:08:48,925 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:08:48,928 [Worker-54] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:08:48,929 [Worker-54] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:09:08,916 [Worker-55] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-test:1.0.0-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-test/pom.xml.
+2017-10-01 15:09:09,133 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:09:09,139 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:09:09,147 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:09:09,148 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:09:25,920 [Worker-57] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-test:1.0.0-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-test/pom.xml.
+2017-10-01 15:09:26,026 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:09:26,027 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:09:26,030 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:09:26,032 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:10:02,991 [Worker-57] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-test:1.0.0-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-test/pom.xml.
+2017-10-01 15:10:03,105 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:10:03,107 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:10:03,109 [Worker-57] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:10:03,111 [Worker-57] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:16:03,882 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:16:03,883 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:16:03,885 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:16:03,887 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:16:38,391 [Worker-59] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-server:1.0.0-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-server/pom.xml.
+2017-10-01 15:16:41,007 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:16:41,008 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:16:41,011 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:16:41,012 [Worker-59] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:16:41,014 [Worker-59] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of store-server
+2017-10-01 15:16:41,016 [Worker-59] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for store-server
+2017-10-01 15:16:41,025 [Worker-59] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:17:02,096 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:17:02,098 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-10-01 15:17:02,146 [Worker-56] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:17:02,147 [Worker-56] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:17:16,130 [Worker-58] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:17:16,131 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:17:16,133 [Worker-58] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:17:16,134 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:17:30,480 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:17:30,481 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:17:30,484 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:17:30,485 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:17:41,967 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:17:41,968 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:17:41,979 [Worker-55] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:17:41,980 [Worker-55] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:19:03,248 [Worker-62] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-server:1.0.0-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-server/pom.xml.
+2017-10-01 15:19:05,131 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:19:05,132 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:19:05,135 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:19:05,136 [Worker-62] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:19:05,136 [Worker-62] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of store-server
+2017-10-01 15:19:05,137 [Worker-62] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for store-server
+2017-10-01 15:19:05,144 [Worker-62] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:19:07,607 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:19:07,612 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-10-01 15:19:07,617 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:19:07,619 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:49:29,345 [Worker-58] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:49:29,347 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:49:29,349 [Worker-58] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:49:29,350 [Worker-58] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:49:36,133 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:49:36,139 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 15:49:36,143 [Worker-61] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:49:36,144 [Worker-61] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:51:02,710 [Worker-61] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2017-10-01 15:51:04,406 [Worker-61] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-client:1.0.0-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-client/pom.xml.
+2017-10-01 15:51:04,999 [Worker-61] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-server:1.0.0-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-server/pom.xml.
+2017-10-01 15:51:07,566 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /store-client/src/main/java
+2017-10-01 15:51:07,567 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /store-client/src/main/resources
+2017-10-01 15:51:07,568 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /store-client/src/test/java
+2017-10-01 15:51:07,729 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /store-server/src/main/java
+2017-10-01 15:51:07,729 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /store-server/src/main/resources
+2017-10-01 15:51:07,730 [Worker-61] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /store-server/src/test/java
+2017-10-01 15:51:09,237 [Worker-61] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for store-server
+2017-10-01 15:51:09,262 [Worker-61] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 6 sec
+2017-10-01 15:51:10,349 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:51:10,399 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2017-10-01 15:51:10,434 [Worker-67] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:51:10,435 [Worker-67] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-client/src/test/resources
+2017-10-01 15:51:12,618 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:51:12,620 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-10-01 15:51:12,631 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 15:51:12,632 [Worker-65] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 15:51:12,633 [Worker-65] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of store-server
+2017-10-01 15:51:12,634 [Worker-65] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for store-server
+2017-10-01 15:51:12,647 [Worker-65] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:08:44,888 [Worker-68] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-server:1.0.0-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-server/pom.xml.
+2017-10-01 16:08:45,492 [Worker-68] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.pom
+2017-10-01 16:08:45,554 [Worker-68] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.pom
+2017-10-01 16:08:45,652 [Worker-68] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar
+2017-10-01 16:08:46,176 [Worker-68] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar
+2017-10-01 16:08:48,256 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:08:48,319 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:08:48,323 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:08:48,324 [Worker-68] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:08:48,324 [Worker-68] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of store-server
+2017-10-01 16:08:48,324 [Worker-68] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for store-server
+2017-10-01 16:08:48,331 [Worker-68] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:08:50,244 [Worker-70] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:08:50,245 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-10-01 16:08:50,249 [Worker-70] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:08:50,251 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:09:39,148 [Worker-70] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2017-10-01 16:09:39,553 [Worker-70] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.kostrova:store-server:1.0.0-SNAPSHOT @ /home/ksusha/eclipse-oxygen-workspace/store-server/pom.xml.
+2017-10-01 16:09:41,441 [Worker-70] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /store-server/src/main/java
+2017-10-01 16:09:41,441 [Worker-70] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /store-server/src/main/resources
+2017-10-01 16:09:41,442 [Worker-70] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /store-server/src/test/java
+2017-10-01 16:09:42,123 [Worker-70] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for store-server
+2017-10-01 16:09:42,128 [Worker-70] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 2 sec
+2017-10-01 16:09:43,301 [Worker-70] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:09:43,303 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2017-10-01 16:09:43,311 [Worker-70] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:09:43,312 [Worker-70] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:09:43,313 [Worker-70] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of store-server
+2017-10-01 16:09:43,313 [Worker-70] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for store-server
+2017-10-01 16:09:43,335 [Worker-70] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:13:26,025 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:13:26,026 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:13:26,028 [Worker-71] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:13:26,030 [Worker-71] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:14:45,414 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:14:45,415 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:14:45,419 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:14:45,420 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:15:56,346 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:15:56,347 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:15:56,350 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:15:56,351 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:16:09,097 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:16:09,098 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:16:09,103 [Worker-76] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:16:09,104 [Worker-76] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:16:17,357 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:16:17,359 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:16:17,376 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:16:17,377 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:47:04,315 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:47:04,318 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:47:04,321 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:47:04,322 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:47:26,528 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:47:26,530 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:47:26,532 [Worker-74] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:47:26,533 [Worker-74] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:53:43,418 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:53:43,419 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:53:43,423 [Worker-78] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:53:43,424 [Worker-78] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
+2017-10-01 16:56:04,306 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:56:04,307 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2017-10-01 16:56:04,309 [Worker-75] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2017-10-01 16:56:04,310 [Worker-75] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory /home/ksusha/eclipse-oxygen-workspace/store-server/src/test/resources
