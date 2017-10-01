@@ -14,11 +14,8 @@
 	</modules>
 
 	<properties>
-<<<<<<< HEAD
 <maven.compiler.source>1.8</maven.compiler.source>
 <maven.compiler.target>1.8</maven.compiler.target>
-=======
->>>>>>> 7f9373375fe6edea3c928dd45b7eb68254c1de79
 		<java.compiler.version>1.8</java.compiler.version>
 	</properties>
 
@@ -50,8 +47,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-<<<<<<< HEAD
 </project>
-=======
-</project>
->>>>>>> 7f9373375fe6edea3c928dd45b7eb68254c1de79

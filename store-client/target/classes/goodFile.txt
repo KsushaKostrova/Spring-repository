@@ -1,1 +1,0 @@
-Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]there's nothing in the store
