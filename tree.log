@@ -1,0 +1,63 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] store
+[INFO] store-server
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building store 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ store ---
+[INFO] com.kostrova:store:pom:1.0.0-SNAPSHOT
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Building store-server 1.0.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.9.1/log4j-api-2.9.1.pom
+Progress (1): 2.1/12 kBProgress (1): 4.9/12 kBProgress (1): 7.7/12 kBProgress (1): 10/12 kB Progress (1): 12 kB                      Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.9.1/log4j-api-2.9.1.pom (12 kB at 15 kB/s)
+Downloading: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.9.1/log4j-api-2.9.1.jar
+Progress (1): 2.1/240 kBProgress (1): 4.9/240 kBProgress (1): 7.7/240 kBProgress (1): 10/240 kB Progress (1): 13/240 kBProgress (1): 16/240 kBProgress (1): 19/240 kBProgress (1): 21/240 kBProgress (1): 24/240 kBProgress (1): 27/240 kBProgress (1): 30/240 kBProgress (1): 32/240 kBProgress (1): 36/240 kBProgress (1): 40/240 kBProgress (1): 44/240 kBProgress (1): 49/240 kBProgress (1): 53/240 kBProgress (1): 57/240 kBProgress (1): 61/240 kBProgress (1): 65/240 kBProgress (1): 69/240 kBProgress (1): 73/240 kBProgress (1): 77/240 kBProgress (1): 81/240 kBProgress (1): 85/240 kBProgress (1): 89/240 kBProgress (1): 94/240 kBProgress (1): 98/240 kBProgress (1): 102/240 kBProgress (1): 106/240 kBProgress (1): 110/240 kBProgress (1): 114/240 kBProgress (1): 118/240 kBProgress (1): 122/240 kBProgress (1): 126/240 kBProgress (1): 130/240 kBProgress (1): 135/240 kBProgress (1): 139/240 kBProgress (1): 143/240 kBProgress (1): 147/240 kBProgress (1): 151/240 kBProgress (1): 155/240 kBProgress (1): 159/240 kBProgress (1): 163/240 kBProgress (1): 167/240 kBProgress (1): 171/240 kBProgress (1): 176/240 kBProgress (1): 180/240 kBProgress (1): 184/240 kBProgress (1): 188/240 kBProgress (1): 192/240 kBProgress (1): 196/240 kBProgress (1): 200/240 kBProgress (1): 204/240 kBProgress (1): 208/240 kBProgress (1): 212/240 kBProgress (1): 216/240 kBProgress (1): 221/240 kBProgress (1): 225/240 kBProgress (1): 229/240 kBProgress (1): 233/240 kBProgress (1): 237/240 kBProgress (1): 240 kB                        Downloaded: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-api/2.9.1/log4j-api-2.9.1.jar (240 kB at 743 kB/s)
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ store-server ---
+[INFO] com.kostrova:store-server:war:1.0.0-SNAPSHOT
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- javax.servlet.jsp:jsp-api:jar:2.2:provided
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- org.springframework:spring-context:jar:4.3.11.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.3.11.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.11.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.3.11.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.3.11.RELEASE:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-databind:jar:2.9.1:compile
+[INFO] |  \- com.fasterxml.jackson.core:jackson-core:jar:2.8.10:compile
+[INFO] +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.1:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-annotations:jar:2.9.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.11.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.3.11.RELEASE:compile
+[INFO] +- org.springframework.security:spring-security-core:jar:4.2.3.RELEASE:compile
+[INFO] |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] +- org.springframework.security:spring-security-web:jar:4.2.3.RELEASE:compile
+[INFO] +- org.springframework.security:spring-security-config:jar:4.2.3.RELEASE:compile
+[INFO] +- org.apache.taglibs:taglibs-standard-jstlel:jar:1.2.1:compile
+[INFO] |  +- org.apache.taglibs:taglibs-standard-spec:jar:1.2.1:compile
+[INFO] |  \- org.apache.taglibs:taglibs-standard-impl:jar:1.2.1:compile
+[INFO] +- org.apache.logging.log4j:log4j-core:jar:2.9.1:compile
+[INFO] +- org.apache.logging.log4j:log4j-api:jar:2.9.1:compile
+[INFO] +- org.apache.logging.log4j:log4j-slf4j-impl:jar:2.9.1:compile
+[INFO] |  \- org.slf4j:slf4j-api:jar:1.7.25:compile
+[INFO] \- org.apache.logging.log4j:log4j-jcl:jar:2.9.1:compile
+[INFO]    \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] store .............................................. SUCCESS [  3.466 s]
+[INFO] store-server ....................................... SUCCESS [  3.280 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.591 s
+[INFO] Finished at: 2017-09-28T18:13:21+03:00
+[INFO] Final Memory: 20M/309M
+[INFO] ------------------------------------------------------------------------

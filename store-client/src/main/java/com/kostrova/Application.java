@@ -22,6 +22,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -53,6 +55,10 @@ public class Application {
 			printGood(30);
 			deleteGood(30);
 			printAllGoodInfo();
+		//	good.setQuantity(5);
+		//	addExistingGood(good);
+		//	deleteGood(30);
+		//	printGood(30);
 		};
 	}
 
