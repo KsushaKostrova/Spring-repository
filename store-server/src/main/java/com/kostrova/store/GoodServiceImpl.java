@@ -35,4 +35,13 @@ public class GoodServiceImpl implements GoodService {
 	public List<Good> getAllGoods() {
 		return goodRepository.getAllGoods();
 	}
+
+	public IGoodDao getGoodRepository() {
+		return goodRepository;
+	}
+
+	public void setGoodRepository(IGoodDao goodRepository) {
+		this.goodRepository = goodRepository;
+	}
+	
 }

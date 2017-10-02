@@ -66,4 +66,14 @@ public class GoodsController {
 	//	return goodService.getAllGoods();
 	}
 
+
+	public GoodService getGoodService() {
+		return goodService;
+	}
+
+
+	public void setGoodService(GoodService goodService) {
+		this.goodService = goodService;
+	}
+
 }

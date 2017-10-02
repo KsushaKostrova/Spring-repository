@@ -35,5 +35,13 @@ public class GoodDaoImpl implements IGoodDao{
 	public List<Good> getAllGoods() {
 		return new ArrayList<>(goods.values());
 	}
+
+	public Map<Integer, Good> getGoods() {
+		return goods;
+	}
+
+	public void setGoods(Map<Integer, Good> goods) {
+		this.goods = goods;
+	}
 	
 }
