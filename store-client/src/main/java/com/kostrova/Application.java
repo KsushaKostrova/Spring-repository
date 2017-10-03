@@ -17,9 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -30,17 +28,17 @@ import org.springframework.web.client.RestTemplate;
 public class Application {
 
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
 
 	public static void main(String args[]) {
 		SpringApplication.run(Application.class);
 	}
-	
+
 	@Bean
 	public RestTemplate restTemplate() {
-	    return new RestTemplate();
+		return new RestTemplate();
 	}
 
 	@Bean
@@ -50,14 +48,21 @@ public class Application {
 			good.setId(30);
 			good.setName("pen");
 			good.setPrice(15.0);
-			good.setQuantity(1);
-			addNewGood(good);
-			printGood(30);
-			good.setQuantity(5);
-			addExistingGood(good);
-			printGood(30);
-			deleteGood(30);
-			printAllGoodInfo();
+			good.setQuantity(1);			
+			try {
+				addNewGood(good);
+				printGood(30);
+				good.setQuantity(5);
+				addExistingGood(good);
+				printGood(30);
+				deleteGood(30);
+				printAllGoodInfo();
+			} catch (WrongPropertyValueException e) {
+				e.printStackTrace();
+			} catch (NotExistingGoodException ex) {
+				ex.printStackTrace();
+			}
+
 		};
 	}
 
@@ -70,33 +75,50 @@ public class Application {
 		return headers;
 	}
 
-	public Good printGood(Integer goodId) {
-//		RestTemplate restTemplate = new RestTemplate();
+	public Good printGood(Integer goodId) throws WrongPropertyValueException, NotExistingGoodException {
+		if (goodId <= 0) {
+			throw new WrongPropertyValueException("Impossible value of id");
+		}
 		String url = "http://localhost:8080/store-server/good/{goodId}";
 		HttpEntity<Object> request = new HttpEntity<Object>(getHeaders());
+
+		Good good = null;
 		ResponseEntity<Good> response = restTemplate.exchange(url, HttpMethod.GET, request, Good.class, goodId);
-		Good good = response.getBody();
+		good = response.getBody();
+		if (good == null) {			
+			throw new NotExistingGoodException("there is no good with id " + goodId);
+		}
 		try {
-			Files.write(Paths.get("src/main/resources/goodFile.txt"), good.toString().getBytes(), StandardOpenOption.APPEND);
+			Files.write(Paths.get("src/main/resources/goodFile.txt"), good.toString().getBytes(),
+					StandardOpenOption.APPEND);
 		} catch (IOException e) {
 		}
 		log.info(good.toString());
 		return good;
 	}
 
-	public void addNewGood(Good good) {
+	public void addNewGood(Good good) throws WrongPropertyValueException {
+		if (good.getId() <= 0) {
+			throw new WrongPropertyValueException("Impossible value of id");
+		} else if (good.getQuantity() < 0) {
+			throw new WrongPropertyValueException("Impossible value of quantity");
+		} else if (good.getPrice() < 0) {
+			throw new WrongPropertyValueException("Impossible value of price");
+		}
 		String url = "http://localhost:8080/store-server/good/";
 
 		HttpEntity<Object> request = new HttpEntity<Object>(good, getHeaders());
-		
+
 		restTemplate.exchange(url, HttpMethod.POST, request, Good.class);
-		
+
 		System.out.println(good.toString());
 		log.info(good.toString());
 	}
 
-	public void deleteGood(Integer goodId) {
-//		RestTemplate restTemplate = new RestTemplate();
+	public void deleteGood(Integer goodId) throws WrongPropertyValueException {
+		if (goodId <= 0) {
+			throw new WrongPropertyValueException("Impossible value of id");
+		}
 		String url = "http://localhost:8080/store-server/good/{goodId}";
 
 		HttpEntity<Object> request = new HttpEntity<Object>(getHeaders());
@@ -105,35 +127,43 @@ public class Application {
 
 	public List<LinkedHashMap<String, Object>> printAllGoodInfo() {
 		String url = "http://localhost:8080/store-server/goods";
-		
-//		RestTemplate restTemplate = new RestTemplate(); 
-		
-        HttpEntity<String> request = new HttpEntity<String>(getHeaders());
-        ResponseEntity<List> response = restTemplate.exchange(url, HttpMethod.GET, request, List.class);
-        List<LinkedHashMap<String, Object>> goodMap = (List<LinkedHashMap<String, Object>>)response.getBody();
-        try (FileWriter fw = new FileWriter("src/main/resources/goodFile.txt", true); 
-        		BufferedWriter bw = new BufferedWriter(fw);
-        		PrintWriter out = new PrintWriter(bw)) {
-        			if(goodMap!=null){
-        	            for(LinkedHashMap<String, Object> map : goodMap){
-        	            	out.println("Good : id="+map.get("id")+", Name="+map.get("name")+", Price="+map.get("price")+", Quantity="+map.get("quantity"));
-        	            	log.info("Good : id="+map.get("id")+", Name="+map.get("name")+", Price="+map.get("price")+", Quantity="+map.get("quantity"));
-        	            }
-        	        }
-        			out.println("there's nothing in the store");
-        		} catch (IOException e) {
-        			
-        		}
-        return goodMap;
+
+		// RestTemplate restTemplate = new RestTemplate();
+
+		HttpEntity<String> request = new HttpEntity<String>(getHeaders());
+		ResponseEntity<List> response = restTemplate.exchange(url, HttpMethod.GET, request, List.class);
+		List<LinkedHashMap<String, Object>> goodMap = (List<LinkedHashMap<String, Object>>) response.getBody();
+		try (FileWriter fw = new FileWriter("src/main/resources/goodFile.txt", true);
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter out = new PrintWriter(bw)) {
+			if (goodMap != null) {
+				for (LinkedHashMap<String, Object> map : goodMap) {
+					out.println("Good : id=" + map.get("id") + ", Name=" + map.get("name") + ", Price="
+							+ map.get("price") + ", Quantity=" + map.get("quantity"));
+					log.info("Good : id=" + map.get("id") + ", Name=" + map.get("name") + ", Price=" + map.get("price")
+							+ ", Quantity=" + map.get("quantity"));
+				}
+			}
+			out.println("there's nothing in the store");
+		} catch (IOException e) {
+
+		}
+		return goodMap;
 	}
 
-	public void addExistingGood(Good good) {
+	public void addExistingGood(Good good) throws WrongPropertyValueException {
+		if (good.getId() <= 0) {
+			throw new WrongPropertyValueException("Impossible value of id");
+		} else if (good.getQuantity() < 0) {
+			throw new WrongPropertyValueException("Impossible value of quantity");
+		} else if (good.getPrice() < 0) {
+			throw new WrongPropertyValueException("Impossible value of price");
+		}
 		String url = "http://localhost:8080/store-server/good/";
-		
+
 		HttpEntity<Object> request = new HttpEntity<Object>(good, getHeaders());
-//		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.exchange(url, HttpMethod.POST, request, Good.class);
-		
+		restTemplate.exchange(url, HttpMethod.PUT, request, Good.class);
+
 		System.out.println(good.toString());
 		log.info(good.toString());
 	}

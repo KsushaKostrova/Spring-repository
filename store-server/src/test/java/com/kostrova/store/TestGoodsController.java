@@ -2,21 +2,16 @@ package com.kostrova.store;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 public class TestGoodsController {
 	
@@ -32,35 +27,79 @@ public class TestGoodsController {
 		goodsController.setGoodService(goodService);
 	}
 
-//	@Test
-//	public void testAddNewGood_wrongIdThrowsException() throws WrongPropertyValueException {
-//		Good good = new Good();
-//		good.setId(-1);
-//		good.setName("pen");
-//		good.setPrice(15.0);
-//		good.setQuantity(1);
-//		doThrow(new WrongPropertyValueException("Impossible value of id")).when(goodsController.addNewGood(good));
-//	}
-//	
-//	@Test
-//	public void testAddNewGood_wrongQuantityThrowsException() throws WrongPropertyValueException {
-//		Good good = new Good();
-//		good.setId(1);
-//		good.setName("pen");
-//		good.setPrice(15.0);
-//		good.setQuantity(-1);
-//		doThrow(new WrongPropertyValueException("Impossible value of quantity")).when(goodsController.addNewGood(good));
-//	}
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddNewGood_wrongIdThrowsException() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(-1);
+		good.setName("pen");
+		good.setPrice(15.0);
+		good.setQuantity(1);
+		when(goodsController.addNewGood(good)).thenThrow(new WrongPropertyValueException("Impossible value of id"));
+	}
 	
-//	@Test
-//	public void testAddNewGood_wrongPriceThrowsException() throws WrongPropertyValueException {		
-//		Good good = new Good();		
-//		good.setId(1);
-//		good.setName("pen");
-//		good.setPrice(-1.0);
-//		good.setQuantity(1);
-//		doThrow(new WrongPropertyValueException("Impossible value of price")).when(goodsController.addNewGood(good));
-//	}
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddNewGood_wrongQuantityThrowsException() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(1);
+		good.setName("pen");
+		good.setPrice(15.0);
+		good.setQuantity(-1);
+		when(goodsController.addNewGood(good)).thenThrow(new WrongPropertyValueException("Impossible value of quantity"));
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddNewGood_wrongPriceThrowsException() throws WrongPropertyValueException {		
+		Good good = new Good();		
+		good.setId(1);
+		good.setName("pen");
+		good.setPrice(-1.0);
+		good.setQuantity(1);
+		when(goodsController.addNewGood(good)).thenThrow(new WrongPropertyValueException("Impossible value of price"));
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddGood_wrongIdThrowsException() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(-1);
+		good.setName("pen");
+		good.setPrice(15.0);
+		good.setQuantity(1);
+		when(goodsController.addGood(good)).thenThrow(new WrongPropertyValueException("Impossible value of id"));
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddGood_wrongPriceThrowsException() throws WrongPropertyValueException {		
+		Good good = new Good();		
+		good.setId(1);
+		good.setName("pen");
+		good.setPrice(-1.0);
+		good.setQuantity(1);
+		when(goodsController.addGood(good)).thenThrow(new WrongPropertyValueException("Impossible value of price"));
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddGood_wrongQuantityThrowsException() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(1);
+		good.setName("pen");
+		good.setPrice(15.0);
+		good.setQuantity(-1);
+		when(goodsController.addGood(good)).thenThrow(new WrongPropertyValueException("Impossible value of quantity"));
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testDeleteGood_wrongIdThrowsException() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(-1);
+		goodsController.deleteGood(good.getId());
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testgetGoodInfo_wrongIdThrowsException() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(-1);
+		goodsController.getGoodInfo(good.getId());
+	}
 	
 	@Test
 	public void testAddNewGood() throws WrongPropertyValueException {

@@ -35,8 +35,12 @@ public class GoodsController {
 	
 	@RequestMapping(method = RequestMethod.PUT, path = "/good")
 	public Good addGood(@RequestBody Good good) throws WrongPropertyValueException {
-		if (good.getQuantity() < 0) {
+		if (good.getId() <= 0) {
+			throw new WrongPropertyValueException("Impossible value of id");
+		} else if (good.getQuantity() < 0) {
 			throw new WrongPropertyValueException("Impossible value of quantity");
+		} else if (good.getPrice() < 0) {
+			throw new WrongPropertyValueException("Impossible value of price");
 		}
 		goodService.addExistingGood(good);
 		return good;

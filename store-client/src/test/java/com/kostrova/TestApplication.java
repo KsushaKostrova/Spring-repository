@@ -29,7 +29,7 @@ public class TestApplication {
 
 	// @Mock
 	RestTemplate restTemplate;
-
+	
 	@Before
 	public void setUp() {
 		// RestTemplate restTemplate = new RestTemplate();
@@ -50,7 +50,7 @@ public class TestApplication {
 	}
 
 	@Test
-	public void testPrintGood() {
+	public void testPrintGood() throws WrongPropertyValueException, NotExistingGoodException {
 		Good good = new Good();
 		good.setId(1);
 		good.setName("pen");
@@ -104,15 +104,136 @@ public class TestApplication {
 	}
 	
 	@Test
-	public void testDeleteGood() {
+	public void testDeleteGood() throws WrongPropertyValueException {
 		Good good = new Good();
 		good.setId(1);
 		good.setName("pen");
 		good.setPrice(15.0);
 		good.setQuantity(1);
 		
-		mockServer.expect(requestTo("http://localhost:8080/store-server/good/1")).andExpect(method(HttpMethod.DELETE))
+		mockServer.expect(requestTo("http://localhost:8080/store-server/good/1")).andExpect(method(HttpMethod.DELETE))		
+		.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(""));
+		app.deleteGood(1);
+		mockServer.verify();		
+	}
+	
+	@Test
+	public void testAddNewGood() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(3);
+		good.setName("knife");
+		good.setPrice(35.0);
+		good.setQuantity(1);
+		
+		mockServer.expect(requestTo("http://localhost:8080/store-server/good/")).andExpect(method(HttpMethod.POST))		
 		.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
+		app.addNewGood(good);
 		mockServer.verify();
+	}
+	
+	@Test
+	public void testAddExistingGood() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(3);
+		good.setName("knife");
+		good.setPrice(35.0);
+		good.setQuantity(4);
+		
+		mockServer.expect(requestTo("http://localhost:8080/store-server/good/")).andExpect(method(HttpMethod.PUT))		
+		.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
+		app.addExistingGood(good);
+		mockServer.verify();
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testPrintGood_badArgument() throws WrongPropertyValueException, NotExistingGoodException {
+		Good good = new Good();
+		good.setId(-1);
+		app.printGood(good.getId());
+	}
+	
+	@Test(expected=NotExistingGoodException.class)
+	public void testPrintGood_notExistingGood() throws com.kostrova.NotExistingGoodException, WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(40);		
+		mockServer.expect(requestTo("http://localhost:8080/store-server/good/40")).andExpect(method(HttpMethod.GET))
+				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
+		app.printGood(good.getId());
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddNewGood_badArgumentId() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(-1);
+		good.setName("knife");
+		good.setPrice(35.0);
+		good.setQuantity(4);
+		app.addNewGood(good);
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddNewGood_badArgumentPrice() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(1);
+		good.setName("knife");
+		good.setPrice(-1.0);
+		good.setQuantity(4);
+		app.addNewGood(good);
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddNewGood_badArgumentQuantity() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(1);
+		good.setName("knife");
+		good.setPrice(35.0);
+		good.setQuantity(-4);
+		app.addNewGood(good);
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testDeleteGood_badArgument() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(-1);
+		app.deleteGood(good.getId());
+	}
+	
+	@Test
+	public void testDeleteGood_notExistingGood() throws com.kostrova.WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(40);		
+		mockServer.expect(requestTo("http://localhost:8080/store-server/good/40")).andExpect(method(HttpMethod.DELETE))
+				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
+		app.deleteGood(good.getId());
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testExistingNewGood_badArgumentId() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(-1);
+		good.setName("knife");
+		good.setPrice(35.0);
+		good.setQuantity(4);
+		app.addExistingGood(good);
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddExistingGood_badArgumentPrice() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(1);
+		good.setName("knife");
+		good.setPrice(-1.0);
+		good.setQuantity(4);
+		app.addExistingGood(good);
+	}
+	
+	@Test(expected=WrongPropertyValueException.class)
+	public void testAddExistingGood_badArgumentQuantity() throws WrongPropertyValueException {
+		Good good = new Good();
+		good.setId(1);
+		good.setName("knife");
+		good.setPrice(35.0);
+		good.setQuantity(-4);
+		app.addExistingGood(good);
 	}
 }

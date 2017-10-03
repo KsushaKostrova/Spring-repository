@@ -1,10 +1,95 @@
+Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]Good : id=30, Name=pen, Price=15.0, Quantity=5
+there's nothing in the store
 Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]there's nothing in the store
 Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]there's nothing in the store
+Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]Good : id=2, Name=pencil, Price=15.0, Quantity=2
+Good : id=30, Name=pen, Price=15.0, Quantity=5
+there's nothing in the store
+Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]Good : id=2, Name=pencil, Price=15.0, Quantity=2
+Good : id=30, Name=pen, Price=15.0, Quantity=5
+there's nothing in the store
+Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]Good : id=30, Name=pen, Price=15.0, Quantity=5
+there's nothing in the store
 Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]there's nothing in the store
-Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]there's nothing in the store
-Good [id=1, name=pen, price=15.0, quantity=1]Good [id=1, name=pen, price=15.0, quantity=1]Good [id=1, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=1]Good [id=30, name=pen, price=15.0, quantity=5]there's nothing in the store
-Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15, Quantity=1
-Good : id=2, Name=pencil, Price=15, Quantity=2
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
+there's nothing in the store
+Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
+Good : id=2, Name=pencil, Price=15.0, Quantity=2
 there's nothing in the store
 Good [id=1, name=pen, price=15.0, quantity=1]Good : id=1, Name=pen, Price=15.0, Quantity=1
 Good : id=2, Name=pencil, Price=15.0, Quantity=2

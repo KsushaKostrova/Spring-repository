@@ -24,7 +24,6 @@ public class TestGoodServiceImpl {
 	
 	@Test
 	public void testAddExistingGood() {
-	//	Mockito.spy(goodDao);
 		Good expected = new Good();
 		expected.setId(1);
 		goodService.addExistingGood(expected);
