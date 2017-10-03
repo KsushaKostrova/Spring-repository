@@ -74,13 +74,22 @@ public class Application {
 		headers.add("Authorization", "Basic " + base64ClientCredentials);
 		return headers;
 	}
+	
+	private static HttpHeaders getEmployeeHeaders() {
+		String plainCreds = "employee:employee";
+		byte[] encodedBytes = Base64.getEncoder().encode(plainCreds.getBytes());
+		String base64ClientCredentials = new String(encodedBytes);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Authorization", "Basic " + base64ClientCredentials);
+		return headers;
+	}
 
 	public Good printGood(Integer goodId) throws WrongPropertyValueException, NotExistingGoodException {
 		if (goodId <= 0) {
 			throw new WrongPropertyValueException("Impossible value of id");
 		}
 		String url = "http://localhost:8080/store-server/good/{goodId}";
-		HttpEntity<Object> request = new HttpEntity<Object>(getHeaders());
+		HttpEntity<Object> request = new HttpEntity<Object>(getEmployeeHeaders());
 
 		Good good = null;
 		ResponseEntity<Good> response = restTemplate.exchange(url, HttpMethod.GET, request, Good.class, goodId);
@@ -130,7 +139,7 @@ public class Application {
 
 		// RestTemplate restTemplate = new RestTemplate();
 
-		HttpEntity<String> request = new HttpEntity<String>(getHeaders());
+		HttpEntity<String> request = new HttpEntity<String>(getEmployeeHeaders());
 		ResponseEntity<List> response = restTemplate.exchange(url, HttpMethod.GET, request, List.class);
 		List<LinkedHashMap<String, Object>> goodMap = (List<LinkedHashMap<String, Object>>) response.getBody();
 		try (FileWriter fw = new FileWriter("src/main/resources/goodFile.txt", true);

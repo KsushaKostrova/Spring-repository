@@ -68,7 +68,6 @@
 			<version>4.3.11.RELEASE</version>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -113,6 +112,7 @@
 			<artifactId>log4j-jcl</artifactId>
 			<version>2.9.1</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -134,6 +134,24 @@
 			<version>2.10.0</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.0.5.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-test -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<version>4.2.3.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+
 	</dependencies>
 	<build>
 		<finalName>${project.name}</finalName>

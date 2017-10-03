@@ -1,6 +1,7 @@
 package com.kostrova;
 
 import static org.junit.Assert.assertEquals;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,22 +20,23 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.test.web.client.response.MockRestResponseCreators;
+
 import org.springframework.web.client.RestTemplate;
+import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 public class TestApplication {
 
 	Application app;
-	HttpHeaders headers;
-
+	String base64ManagerCredentials;
+	String base64EmployeeCredentials;
 	MockRestServiceServer mockServer;
 
-	// @Mock
+	@Mock
 	RestTemplate restTemplate;
-	
+
 	@Before
 	public void setUp() {
-		// RestTemplate restTemplate = new RestTemplate();
-
 		MockitoAnnotations.initMocks(this);
 		app = new Application();
 
@@ -44,9 +47,11 @@ public class TestApplication {
 
 		String plainCreds = "manager:manager";
 		byte[] encodedBytes = Base64.getEncoder().encode(plainCreds.getBytes());
-		String base64ClientCredentials = new String(encodedBytes);
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorization", "Basic " + base64ClientCredentials);
+		base64ManagerCredentials = new String(encodedBytes);
+
+		String plainCreds1 = "employee:employee";
+		byte[] encodedBytes1 = Base64.getEncoder().encode(plainCreds1.getBytes());
+		base64EmployeeCredentials = new String(encodedBytes1);
 	}
 
 	@Test
@@ -57,6 +62,8 @@ public class TestApplication {
 		good.setPrice(15.0);
 		good.setQuantity(1);
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/1")).andExpect(method(HttpMethod.GET))
+				.andExpect(header("Authorization", anyOf(equalTo("Basic " + base64ManagerCredentials),
+						equalTo("Basic " + base64EmployeeCredentials))))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 						.body("{\"id\":1,\"name\":\"pen\",\"price\":15.0,\"quantity\":1}"));
 		Good result = app.printGood(1);
@@ -95,6 +102,8 @@ public class TestApplication {
 		goodsMap.add(mapGood2);
 
 		mockServer.expect(requestTo("http://localhost:8080/store-server/goods")).andExpect(method(HttpMethod.GET))
+				.andExpect(header("Authorization", anyOf(equalTo("Basic " + base64ManagerCredentials),
+								equalTo("Basic " + base64EmployeeCredentials))))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 						.body("[{\"id\": 1,\"name\": \"pen\",\"price\": 15.0,\"quantity\": 1},{\"id\": 2,\"name\": \"pencil\",\"price\": 15.0,\"quantity\": 2}]"));
 
@@ -102,7 +111,7 @@ public class TestApplication {
 		mockServer.verify();
 		assertEquals(result, goodsMap);
 	}
-	
+
 	@Test
 	public void testDeleteGood() throws WrongPropertyValueException {
 		Good good = new Good();
@@ -110,13 +119,15 @@ public class TestApplication {
 		good.setName("pen");
 		good.setPrice(15.0);
 		good.setQuantity(1);
-		
-		mockServer.expect(requestTo("http://localhost:8080/store-server/good/1")).andExpect(method(HttpMethod.DELETE))		
-		.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(""));
+
+		mockServer.expect(requestTo("http://localhost:8080/store-server/good/1")).andExpect(method(HttpMethod.DELETE))
+				.andExpect(header("Authorization", "Basic " + base64ManagerCredentials))
+				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+						.body(""));
 		app.deleteGood(1);
-		mockServer.verify();		
+		mockServer.verify();
 	}
-	
+
 	@Test
 	public void testAddNewGood() throws WrongPropertyValueException {
 		Good good = new Good();
@@ -124,13 +135,14 @@ public class TestApplication {
 		good.setName("knife");
 		good.setPrice(35.0);
 		good.setQuantity(1);
-		
-		mockServer.expect(requestTo("http://localhost:8080/store-server/good/")).andExpect(method(HttpMethod.POST))		
-		.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
+
+		mockServer.expect(requestTo("http://localhost:8080/store-server/good/")).andExpect(method(HttpMethod.POST))
+				.andExpect(header("Authorization", "Basic " + base64ManagerCredentials))
+				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
 		app.addNewGood(good);
 		mockServer.verify();
 	}
-	
+
 	@Test
 	public void testAddExistingGood() throws WrongPropertyValueException {
 		Good good = new Good();
@@ -138,30 +150,34 @@ public class TestApplication {
 		good.setName("knife");
 		good.setPrice(35.0);
 		good.setQuantity(4);
-		
-		mockServer.expect(requestTo("http://localhost:8080/store-server/good/")).andExpect(method(HttpMethod.PUT))		
-		.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
+
+		mockServer.expect(requestTo("http://localhost:8080/store-server/good/")).andExpect(method(HttpMethod.PUT))
+				.andExpect(header("Authorization", "Basic " + base64ManagerCredentials))
+				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
 		app.addExistingGood(good);
 		mockServer.verify();
 	}
-	
-	@Test(expected=WrongPropertyValueException.class)
+
+	@Test(expected = WrongPropertyValueException.class)
 	public void testPrintGood_badArgument() throws WrongPropertyValueException, NotExistingGoodException {
 		Good good = new Good();
 		good.setId(-1);
 		app.printGood(good.getId());
 	}
-	
-	@Test(expected=NotExistingGoodException.class)
-	public void testPrintGood_notExistingGood() throws com.kostrova.NotExistingGoodException, WrongPropertyValueException {
+
+	@Test(expected = NotExistingGoodException.class)
+	public void testPrintGood_notExistingGood()
+			throws com.kostrova.NotExistingGoodException, WrongPropertyValueException {
 		Good good = new Good();
-		good.setId(40);		
+		good.setId(40);
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/40")).andExpect(method(HttpMethod.GET))
+				.andExpect(header("Authorization", anyOf(equalTo("Basic " + base64ManagerCredentials),
+						equalTo("Basic " + base64EmployeeCredentials))))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
 		app.printGood(good.getId());
 	}
-	
-	@Test(expected=WrongPropertyValueException.class)
+
+	@Test(expected = WrongPropertyValueException.class)
 	public void testAddNewGood_badArgumentId() throws WrongPropertyValueException {
 		Good good = new Good();
 		good.setId(-1);
@@ -170,8 +186,8 @@ public class TestApplication {
 		good.setQuantity(4);
 		app.addNewGood(good);
 	}
-	
-	@Test(expected=WrongPropertyValueException.class)
+
+	@Test(expected = WrongPropertyValueException.class)
 	public void testAddNewGood_badArgumentPrice() throws WrongPropertyValueException {
 		Good good = new Good();
 		good.setId(1);
@@ -180,8 +196,8 @@ public class TestApplication {
 		good.setQuantity(4);
 		app.addNewGood(good);
 	}
-	
-	@Test(expected=WrongPropertyValueException.class)
+
+	@Test(expected = WrongPropertyValueException.class)
 	public void testAddNewGood_badArgumentQuantity() throws WrongPropertyValueException {
 		Good good = new Good();
 		good.setId(1);
@@ -190,24 +206,25 @@ public class TestApplication {
 		good.setQuantity(-4);
 		app.addNewGood(good);
 	}
-	
-	@Test(expected=WrongPropertyValueException.class)
+
+	@Test(expected = WrongPropertyValueException.class)
 	public void testDeleteGood_badArgument() throws WrongPropertyValueException {
 		Good good = new Good();
 		good.setId(-1);
 		app.deleteGood(good.getId());
 	}
-	
+
 	@Test
 	public void testDeleteGood_notExistingGood() throws com.kostrova.WrongPropertyValueException {
 		Good good = new Good();
-		good.setId(40);		
+		good.setId(40);
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/40")).andExpect(method(HttpMethod.DELETE))
+				.andExpect(header("Authorization", "Basic " + base64ManagerCredentials))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
 		app.deleteGood(good.getId());
 	}
-	
-	@Test(expected=WrongPropertyValueException.class)
+
+	@Test(expected = WrongPropertyValueException.class)
 	public void testExistingNewGood_badArgumentId() throws WrongPropertyValueException {
 		Good good = new Good();
 		good.setId(-1);
@@ -216,8 +233,8 @@ public class TestApplication {
 		good.setQuantity(4);
 		app.addExistingGood(good);
 	}
-	
-	@Test(expected=WrongPropertyValueException.class)
+
+	@Test(expected = WrongPropertyValueException.class)
 	public void testAddExistingGood_badArgumentPrice() throws WrongPropertyValueException {
 		Good good = new Good();
 		good.setId(1);
@@ -226,8 +243,8 @@ public class TestApplication {
 		good.setQuantity(4);
 		app.addExistingGood(good);
 	}
-	
-	@Test(expected=WrongPropertyValueException.class)
+
+	@Test(expected = WrongPropertyValueException.class)
 	public void testAddExistingGood_badArgumentQuantity() throws WrongPropertyValueException {
 		Good good = new Good();
 		good.setId(1);

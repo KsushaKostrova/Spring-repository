@@ -61,13 +61,11 @@ public class GoodsController {
 			throw new WrongPropertyValueException("Impossible value of id");
 		}
 		return new ResponseEntity<Good>(goodService.getGood(goodId), HttpStatus.OK);
-	//	return goodService.getGood(goodId);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/goods", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<List<Good>> getInfoAboutAllGoods() {
 		return new ResponseEntity<List<Good>>(goodService.getAllGoods(), HttpStatus.OK);
-	//	return goodService.getAllGoods();
 	}
 
 
