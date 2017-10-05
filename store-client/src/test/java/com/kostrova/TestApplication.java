@@ -1,5 +1,7 @@
 package com.kostrova;
 
+import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
@@ -14,22 +16,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.test.web.client.response.MockRestResponseCreators;
-
 import org.springframework.web.client.RestTemplate;
-import static org.hamcrest.CoreMatchers.anyOf;
-import static org.hamcrest.CoreMatchers.equalTo;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class TestApplication {
 
 	Application app;
-	String base64ManagerCredentials;
-	String base64EmployeeCredentials;
 	MockRestServiceServer mockServer;
 
 	@Mock
@@ -44,28 +43,29 @@ public class TestApplication {
 		app.setRestTemplate(restTemplate);
 
 		mockServer = MockRestServiceServer.createServer(app.getRestTemplate());
-
-		String plainCreds = "manager:manager";
+	}
+	
+	private String getCredentials(String user) {
+		String plainCreds = user + ":" + user;
 		byte[] encodedBytes = Base64.getEncoder().encode(plainCreds.getBytes());
-		base64ManagerCredentials = new String(encodedBytes);
-
-		String plainCreds1 = "employee:employee";
-		byte[] encodedBytes1 = Base64.getEncoder().encode(plainCreds1.getBytes());
-		base64EmployeeCredentials = new String(encodedBytes1);
+		String credentials = new String(encodedBytes);
+		return credentials;
 	}
 
 	@Test
-	public void testPrintGood() throws WrongPropertyValueException, NotExistingGoodException {
+	public void testPrintGood() throws WrongPropertyValueException, NotExistingGoodException, JsonProcessingException {
 		Good good = new Good();
 		good.setId(1);
 		good.setName("pen");
 		good.setPrice(15.0);
 		good.setQuantity(1);
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.writeValueAsString(good);
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/1")).andExpect(method(HttpMethod.GET))
-				.andExpect(header("Authorization", anyOf(equalTo("Basic " + base64ManagerCredentials),
-						equalTo("Basic " + base64EmployeeCredentials))))
-				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-						.body("{\"id\":1,\"name\":\"pen\",\"price\":15.0,\"quantity\":1}"));
+				.andExpect(header("Authorization", anyOf(equalTo("Basic " + getCredentials("manager")),
+						equalTo("Basic " + getCredentials("employee")))))
+				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(mapper.writeValueAsString(good)));
+			//			.body("{\"id\":1,\"name\":\"pen\",\"price\":15.0,\"quantity\":1}"));
 		Good result = app.printGood(1);
 		mockServer.verify();
 		assertEquals(result, good);
@@ -102,8 +102,9 @@ public class TestApplication {
 		goodsMap.add(mapGood2);
 
 		mockServer.expect(requestTo("http://localhost:8080/store-server/goods")).andExpect(method(HttpMethod.GET))
-				.andExpect(header("Authorization", anyOf(equalTo("Basic " + base64ManagerCredentials),
-								equalTo("Basic " + base64EmployeeCredentials))))
+				.andExpect(header("Authorization",
+						anyOf(equalTo("Basic " + getCredentials("manager")),
+								equalTo("Basic " + getCredentials("employee")))))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 						.body("[{\"id\": 1,\"name\": \"pen\",\"price\": 15.0,\"quantity\": 1},{\"id\": 2,\"name\": \"pencil\",\"price\": 15.0,\"quantity\": 2}]"));
 
@@ -121,7 +122,7 @@ public class TestApplication {
 		good.setQuantity(1);
 
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/1")).andExpect(method(HttpMethod.DELETE))
-				.andExpect(header("Authorization", "Basic " + base64ManagerCredentials))
+				.andExpect(header("Authorization", "Basic " + getCredentials("manager")))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
 						.body(""));
 		app.deleteGood(1);
@@ -137,7 +138,7 @@ public class TestApplication {
 		good.setQuantity(1);
 
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/")).andExpect(method(HttpMethod.POST))
-				.andExpect(header("Authorization", "Basic " + base64ManagerCredentials))
+				.andExpect(header("Authorization", "Basic " + getCredentials("manager")))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
 		app.addNewGood(good);
 		mockServer.verify();
@@ -152,7 +153,7 @@ public class TestApplication {
 		good.setQuantity(4);
 
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/")).andExpect(method(HttpMethod.PUT))
-				.andExpect(header("Authorization", "Basic " + base64ManagerCredentials))
+				.andExpect(header("Authorization", "Basic " + getCredentials("manager")))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
 		app.addExistingGood(good);
 		mockServer.verify();
@@ -171,8 +172,9 @@ public class TestApplication {
 		Good good = new Good();
 		good.setId(40);
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/40")).andExpect(method(HttpMethod.GET))
-				.andExpect(header("Authorization", anyOf(equalTo("Basic " + base64ManagerCredentials),
-						equalTo("Basic " + base64EmployeeCredentials))))
+				.andExpect(header("Authorization",
+						anyOf(equalTo("Basic " + getCredentials("manager")),
+								equalTo("Basic " + getCredentials("employee")))))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
 		app.printGood(good.getId());
 	}
@@ -219,7 +221,7 @@ public class TestApplication {
 		Good good = new Good();
 		good.setId(40);
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/40")).andExpect(method(HttpMethod.DELETE))
-				.andExpect(header("Authorization", "Basic " + base64ManagerCredentials))
+				.andExpect(header("Authorization", "Basic " + getCredentials("manager")))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
 		app.deleteGood(good.getId());
 	}

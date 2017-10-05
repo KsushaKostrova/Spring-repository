@@ -48,7 +48,7 @@ public class Application {
 			good.setId(30);
 			good.setName("pen");
 			good.setPrice(15.0);
-			good.setQuantity(1);			
+			good.setQuantity(1);
 			try {
 				addNewGood(good);
 				printGood(30);
@@ -62,25 +62,18 @@ public class Application {
 			} catch (NotExistingGoodException ex) {
 				ex.printStackTrace();
 			}
-
 		};
 	}
 
-	private static HttpHeaders getHeaders() {
-		String plainCreds = "manager:manager";
-		byte[] encodedBytes = Base64.getEncoder().encode(plainCreds.getBytes());
-		String base64ClientCredentials = new String(encodedBytes);
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorization", "Basic " + base64ClientCredentials);
-		return headers;
-	}
-	
-	private static HttpHeaders getEmployeeHeaders() {
-		String plainCreds = "employee:employee";
-		byte[] encodedBytes = Base64.getEncoder().encode(plainCreds.getBytes());
-		String base64ClientCredentials = new String(encodedBytes);
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Authorization", "Basic " + base64ClientCredentials);
+	private static HttpHeaders getHeaders(String role) {
+		HttpHeaders headers = null;
+		if (role.equals("manager") || role.equals("employee")) {
+			String plainCreds = role + ":" + role;
+			byte[] encodedBytes = Base64.getEncoder().encode(plainCreds.getBytes());
+			String base64ClientCredentials = new String(encodedBytes);
+			headers = new HttpHeaders();
+			headers.add("Authorization", "Basic " + base64ClientCredentials);
+		}
 		return headers;
 	}
 
@@ -89,12 +82,12 @@ public class Application {
 			throw new WrongPropertyValueException("Impossible value of id");
 		}
 		String url = "http://localhost:8080/store-server/good/{goodId}";
-		HttpEntity<Object> request = new HttpEntity<Object>(getEmployeeHeaders());
+		HttpEntity<Object> request = new HttpEntity<Object>(getHeaders("employee"));
 
 		Good good = null;
 		ResponseEntity<Good> response = restTemplate.exchange(url, HttpMethod.GET, request, Good.class, goodId);
 		good = response.getBody();
-		if (good == null) {			
+		if (good == null) {
 			throw new NotExistingGoodException("there is no good with id " + goodId);
 		}
 		try {
@@ -116,7 +109,7 @@ public class Application {
 		}
 		String url = "http://localhost:8080/store-server/good/";
 
-		HttpEntity<Object> request = new HttpEntity<Object>(good, getHeaders());
+		HttpEntity<Object> request = new HttpEntity<Object>(good, getHeaders("manager"));
 
 		restTemplate.exchange(url, HttpMethod.POST, request, Good.class);
 
@@ -130,16 +123,14 @@ public class Application {
 		}
 		String url = "http://localhost:8080/store-server/good/{goodId}";
 
-		HttpEntity<Object> request = new HttpEntity<Object>(getHeaders());
+		HttpEntity<Object> request = new HttpEntity<Object>(getHeaders("manager"));
 		restTemplate.exchange(url, HttpMethod.DELETE, request, void.class, goodId);
 	}
 
 	public List<LinkedHashMap<String, Object>> printAllGoodInfo() {
 		String url = "http://localhost:8080/store-server/goods";
 
-		// RestTemplate restTemplate = new RestTemplate();
-
-		HttpEntity<String> request = new HttpEntity<String>(getEmployeeHeaders());
+		HttpEntity<String> request = new HttpEntity<String>(getHeaders("employee"));
 		ResponseEntity<List> response = restTemplate.exchange(url, HttpMethod.GET, request, List.class);
 		List<LinkedHashMap<String, Object>> goodMap = (List<LinkedHashMap<String, Object>>) response.getBody();
 		try (FileWriter fw = new FileWriter("src/main/resources/goodFile.txt", true);
@@ -170,7 +161,7 @@ public class Application {
 		}
 		String url = "http://localhost:8080/store-server/good/";
 
-		HttpEntity<Object> request = new HttpEntity<Object>(good, getHeaders());
+		HttpEntity<Object> request = new HttpEntity<Object>(good, getHeaders("manager"));
 		restTemplate.exchange(url, HttpMethod.PUT, request, Good.class);
 
 		System.out.println(good.toString());

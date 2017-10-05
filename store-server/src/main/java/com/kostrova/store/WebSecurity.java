@@ -2,6 +2,7 @@ package com.kostrova.store;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -24,7 +25,10 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.csrf().disable().authorizeRequests().antMatchers("/good/**").hasRole("MANAGER").antMatchers("/goods/")
-				.access("hasRole('MANAGER') or hasRole('EMPLOYEE')").anyRequest().authenticated().and().httpBasic();
+		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.DELETE, "/good/**").hasRole("MANAGER")
+				.antMatchers(HttpMethod.POST, "/good/**").hasRole("MANAGER").antMatchers(HttpMethod.GET, "/good/**")
+				.access("hasRole('MANAGER') or hasRole('EMPLOYEE')").antMatchers(HttpMethod.PUT, "/good/**")
+				.hasRole("MANAGER").antMatchers("/goods/").access("hasRole('MANAGER') or hasRole('EMPLOYEE')")
+				.anyRequest().authenticated().and().httpBasic();
 	}
 }

@@ -1,15 +1,19 @@
 package com.kostrova.store;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.security.test.web.servlet.response.SecurityMockMvcResultMatchers.authenticated;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -18,24 +22,31 @@ import javax.servlet.Filter;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 @ContextConfiguration(classes = { WebAppConfig.class, WebSecurity.class })
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
+@WebMvcTest(GoodsController.class)
 public class TestGoodsController {
 
 	@Mock
 	GoodService goodService;
 
+	@InjectMocks
 	GoodsController goodsController;
 	String base64ManagerCredentials;
 
@@ -43,7 +54,7 @@ public class TestGoodsController {
 	private Filter springSecurityFilterChain;
 
 	@Autowired
-	private WebApplicationContext wac;
+	private UserDetailsService userDetailsService;
 
 	private MockMvc mockMvc;
 
@@ -56,8 +67,9 @@ public class TestGoodsController {
 		String plainCreds = "manager:managers";
 		byte[] encodedBytes = Base64.getEncoder().encode(plainCreds.getBytes());
 		base64ManagerCredentials = new String(encodedBytes);
-		// mockMvc =
-		// MockMvcBuilders.<StandaloneMockMvcBuilder>webAppContextSetup(wac).build();
+
+	
+		mockMvc = MockMvcBuilders.standaloneSetup(goodsController).addFilters(springSecurityFilterChain).build();
 	}
 
 	@Test(expected = WrongPropertyValueException.class)
@@ -136,57 +148,126 @@ public class TestGoodsController {
 	}
 
 	@Test
-	public void testAddNewGood() throws WrongPropertyValueException {
+	public void testAddExistingGoodAsManager() throws Exception {
 		Good expected = new Good();
 		expected.setId(1);
 		expected.setName("pen");
 		expected.setPrice(15.0);
 		expected.setQuantity(1);
-		goodsController.addNewGood(expected);
-		verify(goodService, times(1)).addNewGood(eq(expected));
-	}
+		UserDetails userDetails = userDetailsService.loadUserByUsername("manager");
+		MockHttpServletRequestBuilder addNewGood = put("/good").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
+				.content(
+						"{\r\n" + "	\"id\":\"1\", \"name\":\"pen\", \"price\":\"15.0\", \"quantity\":\"1\"\r\n" + "}")
+				.with(user(userDetails));
 
-	@Test
-	public void testAddGood() throws WrongPropertyValueException {
-		Good expected = new Good();
-		expected.setId(1);
-		expected.setName("pen");
-		expected.setPrice(15.0);
-		expected.setQuantity(1);
-		goodsController.addGood(expected);
+		mockMvc.perform(addNewGood).andExpect(status().isOk());
+
 		verify(goodService, times(1)).addExistingGood(eq(expected));
 	}
 
 	@Test
-	public void testDeleteGood() throws WrongPropertyValueException {
+	public void testAddNewGoodAsManager() throws Exception {
 		Good expected = new Good();
 		expected.setId(1);
-		goodsController.deleteGood(expected.getId());
+		expected.setName("pencil");
+		expected.setPrice(15.0);
+		expected.setQuantity(2);
+		UserDetails userDetails = userDetailsService.loadUserByUsername("manager");
+		MockHttpServletRequestBuilder addNewGood = post("/good")
+				.contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).content("{\r\n"
+						+ "	\"id\":\"1\", \"name\":\"pencil\", \"price\":\"15.0\", \"quantity\":\"2\"\r\n" + "}")
+				.with(user(userDetails));
+
+		mockMvc.perform(addNewGood).andExpect(status().isOk());
+
+		verify(goodService, times(1)).addNewGood(eq(expected));
+	}
+
+	@Test
+	public void testDeleteGoodAsManager() throws Exception {
+		Good expected = new Good();
+		expected.setId(1);
+		UserDetails userDetails = userDetailsService.loadUserByUsername("manager");
+		MockHttpServletRequestBuilder addNewGood = delete("/good/1").with(user(userDetails));
+		mockMvc.perform(addNewGood).andExpect(status().isOk()).andExpect(authenticated().withUsername("manager"));
 		verify(goodService, times(1)).deleteGood(eq(expected.getId()));
 	}
 
 	@Test
-	public void testGetGoodInfo() throws WrongPropertyValueException {
-		Good good = new Good();
-		good.setId(1);
-		Good actual = goodService.getGood(good.getId());
-		Good expected = goodsController.getGoodInfo(good.getId()).getBody();
-		when(goodService.getGood(good.getId())).thenReturn(actual);
-		assertEquals(expected, actual);
+	public void testGetGoodInfoAsManager() throws Exception {
+
+		Good actual = new Good();
+		actual.setId(1);
+		actual.setName("pencil");
+		actual.setPrice(15.0);
+		actual.setQuantity(2);
+		when(goodService.getGood(actual.getId())).thenReturn(actual);
+		
+		UserDetails userDetails = userDetailsService.loadUserByUsername("manager");
+		mockMvc.perform(get("/good/1").with(user(userDetails))).andExpect(status().isOk())
+				.andExpect(content().json(
+						"{" + "\"id\": 1," + "\"name\": \"pencil\"," + "\"price\": 15.0," + "\"quantity\": 2" + "}"));
+
+		verify(goodService, times(1)).getGood(actual.getId());
+	}
+	
+	@Test
+	public void testGetGoodInfoAsEmployee() throws Exception {
+
+		Good actual = new Good();
+		actual.setId(1);
+		actual.setName("pencil");
+		actual.setPrice(15.0);
+		actual.setQuantity(2);
+		when(goodService.getGood(actual.getId())).thenReturn(actual);
+		
+		UserDetails userDetails = userDetailsService.loadUserByUsername("employee");
+		mockMvc.perform(get("/good/1").with(user(userDetails))).andExpect(status().isOk())
+				.andExpect(content().json(
+						"{" + "\"id\": 1," + "\"name\": \"pencil\"," + "\"price\": 15.0," + "\"quantity\": 2" + "}"));
+
+		verify(goodService, times(1)).getGood(actual.getId());
 	}
 
 	@Test
-	public void testGetInfoAboutAllGoods() throws Exception {
+	public void testGetInfoAboutAllGoodsAsManager() throws Exception {
+
+		UserDetails userDetails = userDetailsService.loadUserByUsername("manager");
 		Good good = new Good();
 		good.setId(1);
-		List<Good> actual = goodService.getAllGoods();
-		List<Good> expected = goodsController.getInfoAboutAllGoods().getBody();
+		good.setName("pencil");
+		good.setPrice(15.0);
+		good.setQuantity(2);
+
+		List<Good> actual = new ArrayList<>();
+		actual.add(good);
 		when(goodService.getAllGoods()).thenReturn(actual);
 
-		mockMvc = MockMvcBuilders.webAppContextSetup(wac).addFilters(springSecurityFilterChain).build();
-		mockMvc.perform(get("/goods").with(user("manager").password("manager").roles("MANAGER")))
-				.andExpect(status().isOk()).andExpect(authenticated().withUsername("manager"));
-		
-		assertEquals(expected, actual);
+		mockMvc.perform(get("/goods").with(user(userDetails)).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+				.andExpect(status().isOk()).andExpect(content().json("[" + "{" + "\"id\": 1," + "\"name\": \"pencil\","
+						+ "\"price\": 15.0," + "\"quantity\": 2" + "}]"));
+
+		verify(goodService, times(1)).getAllGoods();
+	}
+	
+	@Test
+	public void testGetInfoAboutAllGoodsAsEmployee() throws Exception {
+
+		UserDetails userDetails = userDetailsService.loadUserByUsername("employee");
+		Good good = new Good();
+		good.setId(1);
+		good.setName("pencil");
+		good.setPrice(15.0);
+		good.setQuantity(2);
+
+		List<Good> actual = new ArrayList<>();
+		actual.add(good);
+		when(goodService.getAllGoods()).thenReturn(actual);
+
+		mockMvc.perform(get("/goods").with(user(userDetails)).accept(MediaType.APPLICATION_JSON_UTF8_VALUE))
+				.andExpect(status().isOk()).andExpect(content().json("[" + "{" + "\"id\": 1," + "\"name\": \"pencil\","
+						+ "\"price\": 15.0," + "\"quantity\": 2" + "}]"));
+
+		verify(goodService, times(1)).getAllGoods();
 	}
 }
