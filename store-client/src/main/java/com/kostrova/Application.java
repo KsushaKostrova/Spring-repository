@@ -22,6 +22,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
@@ -59,7 +60,7 @@ public class Application {
 				printAllGoodInfo();
 			} catch (WrongPropertyValueException e) {
 				e.printStackTrace();
-			} catch (NotExistingGoodException ex) {
+			} catch (HttpClientErrorException ex) {
 				ex.printStackTrace();
 			}
 		};
@@ -77,7 +78,7 @@ public class Application {
 		return headers;
 	}
 
-	public Good printGood(Integer goodId) throws WrongPropertyValueException, NotExistingGoodException {
+	public Good printGood(Integer goodId) throws WrongPropertyValueException, HttpClientErrorException {
 		if (goodId <= 0) {
 			throw new WrongPropertyValueException("Impossible value of id");
 		}
@@ -87,15 +88,13 @@ public class Application {
 		Good good = null;
 		ResponseEntity<Good> response = restTemplate.exchange(url, HttpMethod.GET, request, Good.class, goodId);
 		good = response.getBody();
-		if (good == null) {
-			throw new NotExistingGoodException("there is no good with id " + goodId);
-		}
 		try {
 			Files.write(Paths.get("src/main/resources/goodFile.txt"), good.toString().getBytes(),
 					StandardOpenOption.APPEND);
 		} catch (IOException e) {
 		}
 		log.info(good.toString());
+
 		return good;
 	}
 
@@ -127,7 +126,7 @@ public class Application {
 		restTemplate.exchange(url, HttpMethod.DELETE, request, void.class, goodId);
 	}
 
-	public List<LinkedHashMap<String, Object>> printAllGoodInfo() {
+	public List<LinkedHashMap<String, Object>> printAllGoodInfo() throws HttpClientErrorException{
 		String url = "http://localhost:8080/store-server/goods";
 
 		HttpEntity<String> request = new HttpEntity<String>(getHeaders("employee"));

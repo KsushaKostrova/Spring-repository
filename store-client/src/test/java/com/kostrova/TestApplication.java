@@ -60,19 +60,17 @@ public class TestApplication {
 		good.setPrice(15.0);
 		good.setQuantity(1);
 		ObjectMapper mapper = new ObjectMapper();
-		mapper.writeValueAsString(good);
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/1")).andExpect(method(HttpMethod.GET))
 				.andExpect(header("Authorization", anyOf(equalTo("Basic " + getCredentials("manager")),
 						equalTo("Basic " + getCredentials("employee")))))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(mapper.writeValueAsString(good)));
-			//			.body("{\"id\":1,\"name\":\"pen\",\"price\":15.0,\"quantity\":1}"));
 		Good result = app.printGood(1);
 		mockServer.verify();
 		assertEquals(result, good);
 	}
 
 	@Test
-	public void testPrintAllGoodInfo() {
+	public void testPrintAllGoodInfo() throws JsonProcessingException {
 		Good good1 = new Good();
 		good1.setId(1);
 		good1.setName("pen");
@@ -101,12 +99,13 @@ public class TestApplication {
 		goodsMap.add(mapGood1);
 		goodsMap.add(mapGood2);
 
+		ObjectMapper mapper = new ObjectMapper();
 		mockServer.expect(requestTo("http://localhost:8080/store-server/goods")).andExpect(method(HttpMethod.GET))
 				.andExpect(header("Authorization",
 						anyOf(equalTo("Basic " + getCredentials("manager")),
 								equalTo("Basic " + getCredentials("employee")))))
 				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-						.body("[{\"id\": 1,\"name\": \"pen\",\"price\": 15.0,\"quantity\": 1},{\"id\": 2,\"name\": \"pencil\",\"price\": 15.0,\"quantity\": 2}]"));
+						.body(mapper.writeValueAsString(goodsMap)));
 
 		List<LinkedHashMap<String, Object>> result = app.printAllGoodInfo();
 		mockServer.verify();
@@ -123,8 +122,7 @@ public class TestApplication {
 
 		mockServer.expect(requestTo("http://localhost:8080/store-server/good/1")).andExpect(method(HttpMethod.DELETE))
 				.andExpect(header("Authorization", "Basic " + getCredentials("manager")))
-				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-						.body(""));
+				.andRespond(MockRestResponseCreators.withStatus(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON));
 		app.deleteGood(1);
 		mockServer.verify();
 	}
@@ -166,7 +164,7 @@ public class TestApplication {
 		app.printGood(good.getId());
 	}
 
-	@Test(expected = NotExistingGoodException.class)
+	@Test(expected = NullPointerException.class)
 	public void testPrintGood_notExistingGood()
 			throws com.kostrova.NotExistingGoodException, WrongPropertyValueException {
 		Good good = new Good();

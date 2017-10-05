@@ -1,6 +1,7 @@
 package com.kostrova.store;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,14 +19,10 @@ public class GoodsController {
 	@Autowired
 	private GoodService goodService;
 
-	@RequestMapping(method = RequestMethod.POST, path = "/good", consumes = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(method = RequestMethod.POST, path = "/good", consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public Good addNewGood(@RequestBody Good good) throws WrongPropertyValueException {
-		if (good.getId() <= 0) {
-			throw new WrongPropertyValueException("Impossible value of id");
-		} else if (good.getQuantity() < 0) {
-			throw new WrongPropertyValueException("Impossible value of quantity");
-		} else if (good.getPrice() < 0) {
-			throw new WrongPropertyValueException("Impossible value of price");
+		if (good.getId() <= 0 || good.getQuantity() < 0 || good.getPrice() < 0) {
+			throw new IllegalArgumentException();
 		}
 		goodService.addNewGood(good);
 		return good;
@@ -33,12 +30,8 @@ public class GoodsController {
 
 	@RequestMapping(method = RequestMethod.PUT, path = "/good")
 	public Good addGood(@RequestBody Good good) throws WrongPropertyValueException {
-		if (good.getId() <= 0) {
-			throw new WrongPropertyValueException("Impossible value of id");
-		} else if (good.getQuantity() < 0) {
-			throw new WrongPropertyValueException("Impossible value of quantity");
-		} else if (good.getPrice() < 0) {
-			throw new WrongPropertyValueException("Impossible value of price");
+		if (good.getId() <= 0 || good.getQuantity() < 0 || good.getPrice() < 0) {
+			throw new IllegalArgumentException();
 		}
 		goodService.addExistingGood(good);
 		return good;
@@ -47,20 +40,25 @@ public class GoodsController {
 	@RequestMapping(method = RequestMethod.DELETE, path = "/good/{goodId}")
 	public void deleteGood(@PathVariable("goodId") Integer goodId) throws WrongPropertyValueException {
 		if (goodId <= 0) {
-			throw new WrongPropertyValueException("Impossible value of id");
+			throw new IllegalArgumentException();
 		}
 		goodService.deleteGood(goodId);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, path = "/good/{goodId}")
-	public ResponseEntity<Good> getGoodInfo(@PathVariable("goodId") Integer goodId) throws WrongPropertyValueException {
+	public ResponseEntity<Good> getGoodInfo(@PathVariable("goodId") Integer goodId) throws NoSuchElementException, WrongPropertyValueException {
 		if (goodId <= 0) {
-			throw new WrongPropertyValueException("Impossible value of id");
+			throw new IllegalArgumentException();
 		}
-		return new ResponseEntity<Good>(goodService.getGood(goodId), HttpStatus.OK);
+		Good good = goodService.getGood(goodId);
+		if (good != null) {
+			return new ResponseEntity<Good>(good, HttpStatus.OK);
+		} else {
+			throw new NoSuchElementException();
+		}
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, path = "/goods", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+
+	@RequestMapping(method = RequestMethod.GET, path = "/goods", produces = { MediaType.APPLICATION_JSON_UTF8_VALUE })
 	public ResponseEntity<List<Good>> getInfoAboutAllGoods() {
 		List<Good> goods = goodService.getAllGoods();
 		return new ResponseEntity<List<Good>>(goods, HttpStatus.OK);
@@ -69,7 +67,6 @@ public class GoodsController {
 	public GoodService getGoodService() {
 		return goodService;
 	}
-
 
 	public void setGoodService(GoodService goodService) {
 		this.goodService = goodService;
